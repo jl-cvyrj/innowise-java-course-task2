@@ -21,7 +21,7 @@ public class TextComposite extends TextComponent {
 			TextComponent component = componentArray.get(i);
 			builder.append(component.toString());
 
-			switch (getType()) {
+			switch (this.getType()) {
 			case PARAGRAPH:
 				if (i < componentArray.size() - 1) {
 					builder.append("\n\t");

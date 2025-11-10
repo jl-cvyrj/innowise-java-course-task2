@@ -10,11 +10,11 @@ public class LexemeParser extends AbstractParser {
     }
 
     @Override
-    public void parseComponent(String text, TextComposite textComposite) {
-        String[] lexemes = text.split("\\s+");
+    public void parseComponent(String sentence, TextComposite textComposite) {
+        String[] lexemes = sentence.split("\\s+");
         
         for (String lexeme : lexemes) {
-            if (!lexeme.trim().isEmpty()) {
+            if (!lexeme.isBlank()) {
                 TextComposite lexemeComposite = new TextComposite(TextComponentType.LEXEME);
                 getNextParser().parseComponent(lexeme.trim(), lexemeComposite);
                 textComposite.addComponent(lexemeComposite);
