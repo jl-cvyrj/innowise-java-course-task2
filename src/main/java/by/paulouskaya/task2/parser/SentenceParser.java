@@ -18,7 +18,7 @@ public class SentenceParser extends AbstractParser {
         for (String sentence : sentenceArray) {
             if (!sentence.isBlank()) {
                 TextComposite sentenceComposite = new TextComposite(TextComponentType.SENTENCE);
-                getNextParser().parseComponent(sentence.trim(), sentenceComposite);
+                getNextParser().parseComponent(sentence.strip(), sentenceComposite);
                 textComposite.addComponent(sentenceComposite);
             }
         }
