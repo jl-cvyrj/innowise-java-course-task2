@@ -4,6 +4,8 @@ import by.paulouskaya.task2.composite.TextComposite;
 import by.paulouskaya.task2.composite.TextComponentType;
 
 public class LexemeParser extends AbstractParser {
+	
+	public static final String LEXEME_REGEX = "\\s+";
 
     public LexemeParser(WordParser nextParser) {
         super(nextParser);
@@ -11,7 +13,7 @@ public class LexemeParser extends AbstractParser {
 
     @Override
     public void parseComponent(String sentence, TextComposite textComposite) {
-        String[] lexemes = sentence.split("\\s+");
+        String[] lexemes = sentence.split(LEXEME_REGEX);
         
         for (String lexeme : lexemes) {
             if (!lexeme.isBlank()) {
