@@ -22,6 +22,9 @@ public class TextComposite extends TextComponent {
 			builder.append(component.toString());
 
 			switch (this.getType()) {
+			case TEXT:
+				break;
+				
 			case PARAGRAPH:
 				if (i < componentArray.size() - 1) {
 					builder.append("\n\t");
@@ -30,29 +33,26 @@ public class TextComposite extends TextComponent {
 
 			case SENTENCE:
 				if (i < componentArray.size() - 1) {
-					builder.append(". ");
+					if (!(componentArray.get(i + 1).getType() == TextComponentType.PUNCTUATION)) {
+						builder.append(" ");
+					}
 				}
 				break;
 
 			case LEXEME:
-				if (i < componentArray.size() - 1) {
-					builder.append(" ");
-				}
 				break;
 
+			case PUNCTUATION:
+				break;
+				
 			case WORD:
-				if (i < componentArray.size() - 1) {
-					builder.append(" ");
-				}
 				break;
 
 			case SYMBOL:
 				break;
 
 			}
-
 		}
 		return builder.toString();
 	}
-
 }

@@ -5,7 +5,7 @@ import by.paulouskaya.task2.composite.TextComposite;
 
 public class ParagraphParser extends AbstractParser {
 
-	public static final String PARAGRAPH_REGEX = "\n\\s*\n";
+	public static final String PARAGRAPH_REGEX = "(\\R{2,})";
 
 	public ParagraphParser(SentenceParser nextParser) {
 		super(nextParser);
@@ -18,11 +18,10 @@ public class ParagraphParser extends AbstractParser {
 		for (String paragraph : paragraphArray) {
 			if (!paragraph.isBlank()) {
 				TextComposite paragraphComposite = new TextComposite(TextComponentType.PARAGRAPH);
-				getNextParser().parseComponent(paragraph.strip(), paragraphComposite);
+				var sentenceParser = this.getNextParser();
+				sentenceParser.parseComponent(paragraph.strip(), paragraphComposite);
 				textComposite.addComponent(paragraphComposite);
 			}
 		}
-
 	}
-
 }

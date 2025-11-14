@@ -22,14 +22,98 @@ public class WordParserTest {
     }
 
     @Test
-    public void testParseComponent_WordWithPunctuation_Structure() {
+    public void testParseComponent_WordWithExclamation_Structure() {
         SymbolParser symbolParser = new SymbolParser();
         WordParser parser = new WordParser(symbolParser);
         
         TextComposite composite = new TextComposite(TextComponentType.LEXEME);
         parser.parseComponent("hello!", composite);
         
-        String expected = "hello";
+        String expected = "hello!";
+        String actual = composite.toString();
+        
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testParseComponent_WordWithComma_Structure() {
+        SymbolParser symbolParser = new SymbolParser();
+        WordParser parser = new WordParser(symbolParser);
+        
+        TextComposite composite = new TextComposite(TextComponentType.LEXEME);
+        parser.parseComponent("hello,", composite);
+        
+        String expected = "hello,";
+        String actual = composite.toString();
+        
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testParseComponent_WordWithPeriod_Structure() {
+        SymbolParser symbolParser = new SymbolParser();
+        WordParser parser = new WordParser(symbolParser);
+        
+        TextComposite composite = new TextComposite(TextComponentType.LEXEME);
+        parser.parseComponent("Bye.", composite);
+        
+        String expected = "Bye.";
+        String actual = composite.toString();
+        
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testParseComponent_WordWithApostrophe_Structure() {
+        SymbolParser symbolParser = new SymbolParser();
+        WordParser parser = new WordParser(symbolParser);
+        
+        TextComposite composite = new TextComposite(TextComponentType.LEXEME);
+        parser.parseComponent("don't", composite);
+        
+        String expected = "don't";
+        String actual = composite.toString();
+        
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testParseComponent_WordWithHyphen_Structure() {
+        SymbolParser symbolParser = new SymbolParser();
+        WordParser parser = new WordParser(symbolParser);
+        
+        TextComposite composite = new TextComposite(TextComponentType.LEXEME);
+        parser.parseComponent("more-or-less", composite);
+        
+        String expected = "more-or-less";
+        String actual = composite.toString();
+        
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testParseComponent_MultiplePunctuation_Structure() {
+        SymbolParser symbolParser = new SymbolParser();
+        WordParser parser = new WordParser(symbolParser);
+        
+        TextComposite composite = new TextComposite(TextComponentType.LEXEME);
+        parser.parseComponent("hello!!!", composite);
+        
+        String expected = "hello!!!";
+        String actual = composite.toString();
+        
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testParseComponent_PunctuationBetweenWords_Structure() {
+        SymbolParser symbolParser = new SymbolParser();
+        WordParser parser = new WordParser(symbolParser);
+        
+        TextComposite composite = new TextComposite(TextComponentType.LEXEME);
+        parser.parseComponent("hello,world", composite);
+        
+        String expected = "hello,world";
         String actual = composite.toString();
         
         assertEquals(expected, actual);
@@ -41,51 +125,51 @@ public class WordParserTest {
         WordParser parser = new WordParser(symbolParser);
         
         TextComposite composite = new TextComposite(TextComponentType.LEXEME);
-        parser.parseComponent("!@#$", composite);
+        parser.parseComponent("!", composite);
         
-        String expected = "";
+        String expected = "!";
         String actual = composite.toString();
         
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testParseComponent_WordWithNumbers_Structure() {
+    public void testParseComponent_ComplexExample_Structure() {
         SymbolParser symbolParser = new SymbolParser();
         WordParser parser = new WordParser(symbolParser);
         
         TextComposite composite = new TextComposite(TextComponentType.LEXEME);
-        parser.parseComponent("word123", composite);
+        parser.parseComponent("reader's,", composite);
         
-        String expected = "word";
+        String expected = "reader's,";
         String actual = composite.toString();
         
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testParseComponent_MixedCharacters_Structure() {
+    public void testParseComponent_WordWithQuotes_Structure() {
         SymbolParser symbolParser = new SymbolParser();
         WordParser parser = new WordParser(symbolParser);
         
         TextComposite composite = new TextComposite(TextComponentType.LEXEME);
-        parser.parseComponent("a1b2c3!", composite);
+        parser.parseComponent("\"hello\"", composite);
         
-        String expected = "abc";
+        String expected = "\"hello\"";
         String actual = composite.toString();
         
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testParseComponent_CyrillicWord_Structure() {
+    public void testParseComponent_MixedContent_Structure() {
         SymbolParser symbolParser = new SymbolParser();
         WordParser parser = new WordParser(symbolParser);
         
         TextComposite composite = new TextComposite(TextComponentType.LEXEME);
-        parser.parseComponent("hi123!", composite);
+        parser.parseComponent("content,'", composite);
         
-        String expected = "hi";
+        String expected = "content,'";
         String actual = composite.toString();
         
         assertEquals(expected, actual);

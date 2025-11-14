@@ -15,8 +15,9 @@ public class ParagraphParserTest {
         SentenceParser sentenceParser = new SentenceParser(lexemeParser);
         ParagraphParser parser = new ParagraphParser(sentenceParser);
         
-        TextComposite composite = new TextComposite(TextComponentType.TEXT);
-        parser.parseComponent("First.\n\nSecond.", composite);
+        TextComposite composite = new TextComposite(TextComponentType.PARAGRAPH);
+        String input = "First.\n\nSecond.";
+        parser.parseComponent(input, composite);
         
         String expected = "First.\n\tSecond.";
         String actual = composite.toString();
@@ -32,8 +33,9 @@ public class ParagraphParserTest {
         SentenceParser sentenceParser = new SentenceParser(lexemeParser);
         ParagraphParser parser = new ParagraphParser(sentenceParser);
         
-        TextComposite composite = new TextComposite(TextComponentType.TEXT);
-        parser.parseComponent("Single paragraph.", composite);
+        TextComposite composite = new TextComposite(TextComponentType.PARAGRAPH);
+        String input = "Single paragraph.";
+        parser.parseComponent(input, composite);
         
         String expected = "Single paragraph.";
         String actual = composite.toString();
@@ -49,8 +51,9 @@ public class ParagraphParserTest {
         SentenceParser sentenceParser = new SentenceParser(lexemeParser);
         ParagraphParser parser = new ParagraphParser(sentenceParser);
         
-        TextComposite composite = new TextComposite(TextComponentType.TEXT);
-        parser.parseComponent("A\n\n\nB\n\nC", composite);
+        TextComposite composite = new TextComposite(TextComponentType.PARAGRAPH);
+        String input = "A\n\n\nB\n\nC";
+        parser.parseComponent(input, composite);
         
         String expected = "A\n\tB\n\tC";
         String actual = composite.toString();
@@ -66,8 +69,9 @@ public class ParagraphParserTest {
         SentenceParser sentenceParser = new SentenceParser(lexemeParser);
         ParagraphParser parser = new ParagraphParser(sentenceParser);
         
-        TextComposite composite = new TextComposite(TextComponentType.TEXT);
-        parser.parseComponent("", composite);
+        TextComposite composite = new TextComposite(TextComponentType.PARAGRAPH);
+        String input = "";
+        parser.parseComponent(input, composite);
         
         String expected = "";
         String actual = composite.toString();
@@ -83,8 +87,9 @@ public class ParagraphParserTest {
         SentenceParser sentenceParser = new SentenceParser(lexemeParser);
         ParagraphParser parser = new ParagraphParser(sentenceParser);
         
-        TextComposite composite = new TextComposite(TextComponentType.TEXT);
-        parser.parseComponent("   \n\n   ", composite);
+        TextComposite composite = new TextComposite(TextComponentType.PARAGRAPH);
+        String input = "   \n\n   ";
+        parser.parseComponent(input, composite);
         
         String expected = "";
         String actual = composite.toString();
@@ -100,8 +105,9 @@ public class ParagraphParserTest {
         SentenceParser sentenceParser = new SentenceParser(lexemeParser);
         ParagraphParser parser = new ParagraphParser(sentenceParser);
         
-        TextComposite composite = new TextComposite(TextComponentType.TEXT);
-        parser.parseComponent("Hello world.\n\nHow are you?", composite);
+        TextComposite composite = new TextComposite(TextComponentType.PARAGRAPH);
+        String input = "Hello world.\n\nHow are you?";
+        parser.parseComponent(input, composite);
         
         String expected = "Hello world.\n\tHow are you?";
         String actual = composite.toString();
