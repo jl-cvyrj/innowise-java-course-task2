@@ -213,7 +213,6 @@ public class ParagraphParserTest {
         System.out.println("Actual length: " + actual.length());
         System.out.println("First 100 chars of actual: '" + actual.substring(0, Math.min(100, actual.length())) + "'");
         
-        // Пошук першага несупадзення
         int minLength = Math.min(Math.min(expected.length(), actual.length()), 200);
         for (int i = 0; i < minLength; i++) {
             if (expected.charAt(i) != actual.charAt(i)) {
@@ -245,7 +244,6 @@ public class ParagraphParserTest {
         String input = "First sentence. Second sentence.\nThird paragraph.";
         System.out.println("Input: '" + input + "'");
         
-        // Правяраем як разбівае ParagraphParser
         String[] paragraphs = input.split("(\\R)+");
         System.out.println("Paragraphs found by split: " + paragraphs.length);
         for (int i = 0; i < paragraphs.length; i++) {
@@ -273,7 +271,6 @@ public class ParagraphParserTest {
         String input = "First sentence. Second sentence.";
         System.out.println("Input: '" + input + "'");
         
-        // Правяраем як разбівае SentenceParser
         String[] sentences = input.split("(?<=[.!?])\\s+");
         System.out.println("Sentences found: " + sentences.length);
         for (int i = 0; i < sentences.length; i++) {
@@ -300,7 +297,6 @@ public class ParagraphParserTest {
         String input = "First sentence with words";
         System.out.println("Input: '" + input + "'");
         
-        // Правяраем як разбівае LexemeParser
         String[] lexemes = input.split("\\s+");
         System.out.println("Lexemes found: " + lexemes.length);
         for (int i = 0; i < lexemes.length; i++) {
