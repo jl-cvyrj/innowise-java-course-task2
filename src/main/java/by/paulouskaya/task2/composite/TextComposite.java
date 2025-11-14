@@ -1,6 +1,7 @@
 package by.paulouskaya.task2.composite;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TextComposite extends TextComponent {
 
@@ -13,6 +14,16 @@ public class TextComposite extends TextComponent {
 	public void addComponent(TextComponent component) {
 		componentArray.add(component);
 	}
+	
+	public List<TextComponent> getChildren() {
+    return new ArrayList<>(componentArray);
+}
+
+public void setChild(int index, TextComponent component) {
+    if (index >= 0 && index < componentArray.size()) {
+        componentArray.set(index, component);
+    }
+}
 
 	@Override
 	public String toString() {
@@ -59,4 +70,5 @@ public class TextComposite extends TextComponent {
 		}
 		return builder.toString();
 	}
+	
 }
